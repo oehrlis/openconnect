@@ -40,8 +40,9 @@ RUN apk update && apk add --no-cache \
 # ------------------------------------------------------------------------------
 RUN mkdir /var/run/sshd \
   && mkdir /vpn \
-  && mkdir -p /etc/openconnect \
-  addgroup -S vpn && adduser -g "VPN User" -S vpn -G vpn
+  && mkdir -p /etc/openconnect && \
+  addgroup -S vpn && \
+  adduser -g "VPN User" -S vpn -G vpn
 
 # Update sshd configuration
 # ------------------------------------------------------------------------------
