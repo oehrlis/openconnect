@@ -1,22 +1,21 @@
-# -----------------------------------------------------------------------
-# Trivadis AG, Business Development & Support (BDS)
+# ------------------------------------------------------------------------------
+# Trivadis - Part of Accenture, Platform Factory - Data Platforms
 # Saegereistrasse 29, 8152 Glattbrugg, Switzerland
-# -----------------------------------------------------------------------
-# Name.......: docker-compose.yml
-# Author.....: Stefan Oehrli (oes) stefan.oehrli@trivadis.com
+# ------------------------------------------------------------------------------
+# Name.......: Dockerfile
+# Author.....: Stefan Oehrli (oes) stefan.oehrli@accenture.com
 # Editor.....: Stefan Oehrli
-# Date.......: 2019.03.16
-# Revision...: --
-# Purpose....: Simple compose file to create a 19.3 databases
+# Date.......: 2023.04.27
+# Revision...: 0.1.0
+# Purpose....: Dockerfile to build a openconnect image with SSH Deamon
 # Notes......: --
-#
-# Reference..: https://github.com/oehrlis/oudbase
+# Reference..: --
 # License....: Apache License Version 2.0, January 2004 as shown
 #              at http://www.apache.org/licenses/
-# -----------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Modified...:
-# see git revision history with git log for more information on changes
-# -----------------------------------------------------------------------
+# see git revision history for more information on changes/updates
+# ------------------------------------------------------------------------------
 version: '3'
 services:
 
@@ -25,10 +24,12 @@ services:
     container_name: openconnect
     image: oehrlis/openconnect:latest
     privileged: true
+    volumes:
+      - ./authorized_keys:/home/vpn/.ssh/authorized_keys:rw
     env_file:
       - .env
     ports:
       - 4122:22
     cap_add:
       - NET_ADMIN
-# - EOF -----------------------------------------------------------------stefan.oehrli
+# - EOF ------------------------------------------------------------------------
