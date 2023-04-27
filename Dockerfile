@@ -49,14 +49,14 @@ RUN mkdir /var/run/sshd \
 
 # Update sshd configuration
 # ------------------------------------------------------------------------------
-RUN sed -i 's/.*HostBasedAuthentication.*/HostBasedAuthentication no/gi'    /etc/ssh/sshd_config
-RUN sed -i 's/.*MaxAuthTries.*/MaxAuthTries 5/g'                            /etc/ssh/sshd_config
-RUN sed -i 's/.*PermitRootLogin.*/PermitRootLogin no/g'                     /etc/ssh/sshd_config
-RUN sed -i 's/.*X11Forwarding.*/X11Forwarding yes/g'                        /etc/ssh/sshd_config
-RUN sed -i 's/.*X11UseLocalhost.*/X11UseLocalhost no/g'                     /etc/ssh/sshd_config
-RUN sed -i 's/.*PermitTunnel no no/PermitTunnel yes/'                       /etc/ssh/sshd_config
-RUN sed -i 's/.*AllowTcpForwarding no/AllowTcpForwarding yes/'              /etc/ssh/sshd_config
-RUN sed -i 's/.*GatewayPorts no/GatewayPorts yes/'                          /etc/ssh/sshd_config
+RUN sed -i 's/.*HostBasedAuthentication.*/HostBasedAuthentication no/gi'    /etc/ssh/sshd_config && \
+    sed -i 's/.*MaxAuthTries.*/MaxAuthTries 5/g'                            /etc/ssh/sshd_config && \
+    sed -i 's/.*PermitRootLogin.*/PermitRootLogin no/g'                     /etc/ssh/sshd_config && \
+    sed -i 's/.*X11Forwarding.*/X11Forwarding yes/g'                        /etc/ssh/sshd_config && \
+    sed -i 's/.*X11UseLocalhost.*/X11UseLocalhost no/g'                     /etc/ssh/sshd_config && \
+    sed -i 's/.*PermitTunnel no no/PermitTunnel yes/'                       /etc/ssh/sshd_config && \
+    sed -i 's/.*AllowTcpForwarding no/AllowTcpForwarding yes/'              /etc/ssh/sshd_config && \
+    sed -i 's/.*GatewayPorts no/GatewayPorts yes/'                          /etc/ssh/sshd_config
 
 COPY  entrypoint.sh /
 EXPOSE 22
