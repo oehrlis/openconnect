@@ -5,9 +5,9 @@
 # Name.......: Dockerfile
 # Author.....: Stefan Oehrli (oes) stefan.oehrli@accenture.com
 # Editor.....: Stefan Oehrli
-# Date.......: 2023.04.26
-# Revision...: 1.0
-# Purpose....: Dockerfile to build a openconnect images
+# Date.......: 2023.04.27
+# Revision...: 0.1.0
+# Purpose....: Dockerfile to build a openconnect image with SSH Deamon
 # Notes......: --
 # Reference..: --
 # License....: Apache License Version 2.0, January 2004 as shown
@@ -43,7 +43,7 @@ RUN mkdir /var/run/sshd \
   && mkdir -p /etc/openconnect \
   addgroup -S vpn && adduser -g "VPN User" -S vpn -G vpn
 
-# Configure SSH Deamon
+# Update sshd configuration
 # ------------------------------------------------------------------------------
 RUN sed -i 's/.*HostBasedAuthentication.*/HostBasedAuthentication no/gi'    /etc/ssh/sshd_config
 RUN sed -i 's/.*MaxAuthTries.*/MaxAuthTries 5/g'                            /etc/ssh/sshd_config
