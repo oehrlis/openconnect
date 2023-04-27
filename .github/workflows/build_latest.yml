@@ -33,3 +33,9 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: oehrlis/openconnect:latest
+      -        
+        name: Test
+          run: |
+            echo $RELEASE_VERSION
+            echo ${{ env.RELEASE_VERSION }}
+
