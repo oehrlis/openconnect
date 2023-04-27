@@ -44,15 +44,15 @@ RUN mkdir /var/run/sshd \
   && mkdir -p /etc/openconnect && \
   addgroup -S vpn && \
   adduser -g "VPN User" -S vpn -G vpn && \
-  mkdir -p /home/vpn/.ssh && \
-  chmod 700 /home/vpn/.ssh && \
+  mkdir -p /home/vpn/.ssh /root/.ssh && \
+  chmod 700 /home/vpn/.ssh /root/.ssh && \
   chown -R vpn:vpn /home/vpn/.ssh
 
 # Update sshd configuration
 # ------------------------------------------------------------------------------
 RUN sed -i 's/.*HostBasedAuthentication.*/HostBasedAuthentication no/gi'    /etc/ssh/sshd_config && \
     sed -i 's/.*MaxAuthTries.*/MaxAuthTries 5/g'                            /etc/ssh/sshd_config && \
-    sed -i 's/.*PermitRootLogin.*/PermitRootLogin no/g'                     /etc/ssh/sshd_config && \
+    sed -i 's/.*PermitRootLogin.*/PermitRootLogin yes/g'                    /etc/ssh/sshd_config && \
     sed -i 's/.*X11Forwarding.*/X11Forwarding yes/g'                        /etc/ssh/sshd_config && \
     sed -i 's/.*X11UseLocalhost.*/X11UseLocalhost no/g'                     /etc/ssh/sshd_config && \
     sed -i 's/.*PermitTunnel no no/PermitTunnel yes/'                       /etc/ssh/sshd_config && \
