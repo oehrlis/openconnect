@@ -34,6 +34,7 @@ RUN apk update && apk add --no-cache \
   openssh \
   openconnect \
   curl \
+  bash \
   pwgen
 
 # Create environment
