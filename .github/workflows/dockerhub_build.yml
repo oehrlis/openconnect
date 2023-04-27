@@ -1,5 +1,22 @@
-name: Docker CI
-
+# ------------------------------------------------------------------------------
+# Trivadis - Part of Accenture, Platform Factory - Data Platforms
+# Saegereistrasse 29, 8152 Glattbrugg, Switzerland
+# ------------------------------------------------------------------------------
+# Name.......: dockerhub_build.yml
+# Author.....: Stefan Oehrli (oes) stefan.oehrli@accenture.com
+# Editor.....: Stefan Oehrli
+# Date.......: 2023.04.27
+# Revision...: 0.1.0
+# Purpose....: GitHub workflow to build and publish image to Docker Hub
+# Notes......: --
+# Reference..: --
+# License....: Apache License Version 2.0, January 2004 as shown
+#              at http://www.apache.org/licenses/
+# ------------------------------------------------------------------------------
+# Modified...:
+# see git revision history for more information on changes/updates
+# ------------------------------------------------------------------------------
+name: Build and publish image to Docker
 on:
   push:
     branches:
@@ -29,7 +46,7 @@ jobs:
         with:
           images: oehrlis/openconnect
           tags: |
-            # set latest tag for master branch
+            # set latest tag for main branch
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
       - name: Build and push
         uses: docker/build-push-action@v4
@@ -39,3 +56,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+# - EOF ------------------------------------------------------------------------
