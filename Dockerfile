@@ -36,9 +36,12 @@ RUN apk update && apk add --no-cache \
   curl \
   pwgen
 
+# Create environment
+# ------------------------------------------------------------------------------
 RUN mkdir /var/run/sshd \
   && mkdir /vpn \
-  && mkdir -p /etc/openconnect
+  && mkdir -p /etc/openconnect \
+  addgroup -S vpn && adduser -g "VPN User" -S vpn -G vpn
 
 # Configure SSHD
 # ------------------------------------------------------------------------------
