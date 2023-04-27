@@ -1,4 +1,4 @@
-name: ci
+name: Autobuild
 
 on:
   push:
