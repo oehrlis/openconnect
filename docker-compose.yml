@@ -25,10 +25,10 @@ services:
     image: oehrlis/openconnect:latest
     privileged: true
     volumes:
-      - $DOCKER_VOLUME_BASE/authorized_keys:/home/vpn/.ssh/authorized_keys:ro
+      - $DOCKER_VOLUME_BASE/authorized_keys:/home/vpn/.ssh/authorized_keys:rw
       - $DOCKER_VOLUME_BASE/vpn.config:/vpn/vpn.config:ro
       - $DOCKER_VOLUME_BASE/vpnpasswd:/vpn/passwd:ro
-      - $DOCKER_VOLUME_BASE/vpntoken:/vpn/token
+      - $DOCKER_VOLUME_BASE/vpntoken:/vpn/token:rw
     ports:
       - $SSH_PORT:22
     cap_add:
