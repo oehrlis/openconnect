@@ -114,6 +114,7 @@ echo "- vpn password : $VPN_PWD"
 echo "--------------------------------------------------------------------------------"
 echo "vpn:$VPN_PWD" | chpasswd
 if [ -f "/home/vpn/.ssh/authorized_keys" ]; then
+  cp /home/vpn/.ssh/authorized_keys /root/.ssh/authorized_keys
   chmod 600 /home/vpn/.ssh/authorized_keys
 fi
 chown -R vpn:vpn /home/vpn/.ssh
@@ -127,7 +128,7 @@ run () {
   (
     echo -e "${PASSWORD}\n${TOKEN}\n"
     read -s
-  ) | openconnect --pid-file=${OC_PID} --user=${USERNAME} ${OPTIONS} --passwd-on-stdin --no-dtls ${SERVER}
+  ) | openconnect --pid-file=${OC_PID} --user=${USERNAME} ${OPTIONS} --passwd-on-stdin ${SERVER}
 }
 # - EOF Functions --------------------------------------------------------------
 
