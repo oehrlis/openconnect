@@ -1,2 +1,5 @@
 .env
 authorized_keys
+vpnpasswd
+vpntoken
+vpn.config
