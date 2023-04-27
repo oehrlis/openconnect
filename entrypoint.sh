@@ -128,7 +128,7 @@ run () {
   (
     echo -e "${PASSWORD}\n${TOKEN}\n"
     read -s
-  ) | openconnect --pid-file=${OC_PID} --user=${USERNAME} ${OPTIONS} --passwd-on-stdin ${SERVER}
+  ) | openconnect --pid-file=${OC_PID} --user=${USERNAME} ${OPTIONS} --passwd-on-stdin --no-dtls ${SERVER}
 }
 # - EOF Functions --------------------------------------------------------------
 
@@ -139,7 +139,7 @@ exec /usr/sbin/sshd -D -e &
 
 # loop through function run to restart openconnect if necessary 
 until (run); do
-  echo "WARN: openconnect exited. Restarting process in 60 seconds…" >&2
+  echo "WARN: openconnect exited. Restarting process in 60 seconds..." >&2
   sleep 60
 done
 # --- EOF ----------------------------------------------------------------------

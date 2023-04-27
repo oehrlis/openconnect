@@ -116,14 +116,14 @@ Create an ssh session to the Docker container:
 
 ```bash
 . .env
-ssh -o "StrictHostKeyChecking=no" -N vpn@localhost -p ${SSH_PORT}
+ssh -N vpn@localhost -p ${SSH_PORT}
 ```
 
 Forward rdp traffic for some IP:
 
 ```bash
 . .env
-ssh -o "StrictHostKeyChecking=no" -N vpn@localhost -p ${SSH_PORT} -L 3390:192.168.1.10:3389
+ssh -L 3390:192.168.1.10:3389 -N vpn@localhost -p ${SSH_PORT}
 ```
 
 ## Issues
