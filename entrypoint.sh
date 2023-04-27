@@ -32,6 +32,8 @@ echo "--------------------------------------"
 echo "- vpn password : $VPN_PWD"
 echo "--------------------------------------"
 echo "vpn:$VPN_PWD" | chpasswd
+chmod 600 /home/vpn/.ssh/authorized_keys
+chown -R vpn:vpn /home/vpn/.ssh
 
 # do not detach (-D), log to stderr (-e)
 exec /usr/sbin/sshd -D -e &
