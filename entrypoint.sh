@@ -113,7 +113,9 @@ echo "--------------------------------------------------------------------------
 echo "- vpn password : $VPN_PWD"
 echo "--------------------------------------------------------------------------------"
 echo "vpn:$VPN_PWD" | chpasswd
-chmod 600 /home/vpn/.ssh/authorized_keys
+if [ -f "/home/vpn/.ssh/authorized_keys" ]; then
+  chmod 600 /home/vpn/.ssh/authorized_keys
+fi
 chown -R vpn:vpn /home/vpn/.ssh
 
 # - Functions ------------------------------------------------------------------
