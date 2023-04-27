@@ -1,5 +1,7 @@
 # OpenConnect Container
 
+[![Build and publish image to Docker](https://github.com/oehrlis/openconnect/actions/workflows/dockerhub_build.yml/badge.svg)](https://github.com/oehrlis/openconnect/actions/workflows/dockerhub_build.yml)
+
 ## General Informations
 
 tbd
