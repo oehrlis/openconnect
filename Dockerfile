@@ -42,7 +42,10 @@ RUN mkdir /var/run/sshd \
   && mkdir /vpn \
   && mkdir -p /etc/openconnect && \
   addgroup -S vpn && \
-  adduser -g "VPN User" -S vpn -G vpn
+  adduser -g "VPN User" -S vpn -G vpn && \
+  mkdir -p /home/vpn/.ssh && \
+  chmod 700 /home/vpn/.ssh && \
+  chown -R vpn:vpn /home/vpn/.ssh
 
 # Update sshd configuration
 # ------------------------------------------------------------------------------
