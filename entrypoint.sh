@@ -128,7 +128,7 @@ run () {
   (
     echo -e "${PASSWORD}\n${TOKEN}\n"
     read -s
-  ) | openconnect --pid-file=${OC_PID} --user=${USERNAME} ${OPTIONS} --passwd-on-stdin --no-dtls ${SERVER}
+  ) | openconnect --pid-file=${OC_PID} --user=${USERNAME} ${OPTIONS} --passwd-on-stdin ${SERVER}
 }
 # - EOF Functions --------------------------------------------------------------
 
