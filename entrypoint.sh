@@ -141,5 +141,19 @@ exec /usr/sbin/sshd -D -e &
 until (run); do
   echo "WARN: openconnect exited. Restarting process in 60 seconds..." >&2
   sleep 60
+  # load token from file
+  if [ -r /vpn/token ]; then
+    echo "INFO: Reading token..."
+    read TOKEN < /vpn/token
+    while [ -z ${TOKEN} ]; do
+      sleep 1;
+      echo "INFO: Please update token in file vpntoken ..."
+      read TOKEN < /vpn/token;
+    done
+    echo "INFO: Token provided as ${TOKEN}"
+  else
+    echo "ERR : Could not load token from /vpn/token. Please check your volume config" 1>&2
+    exit 1
+  fi
 done
 # --- EOF ----------------------------------------------------------------------
