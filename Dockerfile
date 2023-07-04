@@ -5,7 +5,7 @@
 # Name.......: Dockerfile
 # Author.....: Stefan Oehrli (oes) stefan.oehrli@accenture.com
 # Editor.....: Stefan Oehrli
-# Date.......: 2023.04.27
+# Date.......: 2023.07.04
 # Revision...: 0.1.0
 # Purpose....: Dockerfile to build a openconnect image with SSH Deamon
 # Notes......: --
