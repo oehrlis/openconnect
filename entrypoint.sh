@@ -24,6 +24,7 @@ AUTHGROUP=${AUTHGROUP:-""}                  # VPN Authentication Group
 USERNAME=${USERNAME:-""}                    # VPN Login username
 PASSWORD=${PASSWORD:-""}                    # VPN Login primary password
 TOKEN=${TOKEN:-""}                          # OTP Token
+ONELINE=${ONELINE:-"FALSE"}                 # Password and Token in one line together
 OPTIONS=${OPTIONS:-""}                      # Additional OpenConnect parameters / options
 DYNAMIC_TOKEN=${DYNAMIC_TOKEN:-"TRUE"}      # TRUE if dynamic OTP is required, FALSE otherwise.
 OC_PID=${OC_PID:-"/var/run/openconnect.pid"}  # OpenConnect PID file
@@ -126,7 +127,11 @@ chown -R vpn:vpn /home/vpn/.ssh
 run () {
   echo "INFO: Starting openconnect ..."
   (
-    echo -e "${PASSWORD}\n${TOKEN}\n"
+    if [ "${ONELINE^^}" = "TRUE" ]; then
+      echo -e "${PASSWORD}${TOKEN}\n"
+    else
+      echo -e "${PASSWORD}\n${TOKEN}\n"
+    fi
     read -s
   ) | openconnect --pid-file=${OC_PID} --user=${USERNAME} ${OPTIONS} --passwd-on-stdin ${SERVER}
 }
